@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Getting Started with Webpack</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="node_modules/spectrum-colorpicker/spectrum.css" />
+</head>
+<body style="">
+  <h1>Synaptic AI</h1>
+  <div class="row" style="width:1000px">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" id="iterations" class="form-control" placeholder="Iterations">
+      <span class="input-group-btn">
+        <button id="train_network" class="btn btn-default" type="button">Train Network</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div>
+  <br />
+<div class="row" style="width:1000px">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" id="colorpicker" class="form-control" placeholder="Random Color">
+      <span class="input-group-btn">
+        <button id="predict_color" class="btn btn-default" type="button">Predict Color</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div>
+  <br />
+
+<div class="row" style="width:800px">
+  <div class="col-sm-6">
+      <div id="color_in_txt" style="">RANDOM COLOR:  </div>
+      <div id="color_in" style="height:200px;width:200px"></div>
+  </div><!-- /.col-lg-6 -->
+  <div class="col-sm-6">
+      <div id="color_out_txt" style="font-weight:bold"></div>
+      <div id="train_iterations" style="">Iterations: 20000</div>
+      <div id="color_out_act" style=""></div>
+  </div><!-- /.col-lg-6 -->
+</div>
+<img src="assets/img/nn.jpg" />
+  <!--<div id="color_box" style="height:200px;width:200px"></div>-->
+  <!--<div id="color_out" style="height:200px;width:200px">PREDICTED COLOR</div>-->
+  <script src="bundle.js" charset="utf-8"></script>
+  <script src="node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.js" charset="utf-8"></script>
+  <script src="node_modules/spectrum-colorpicker/spectrum.js" charset="utf-8"></script>
+<script>
+$("#colorpicker").spectrum({
+  color: "#000",
+  preferredFormat: "hex",
+  change: function(e) {
+    console.log(e);
+    const col = `rgb(${Math.round(e._r)}, ${Math.round(e._g)}, ${Math.round(e._b)})`;
+    $('#color_in_txt').html('CHOOSED COLOR: ' + col);
+    $('#color_in').css('background', col);
+  }
+});
+</script>
+
+
+
+</body>
+</html>
